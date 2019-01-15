@@ -1,10 +1,11 @@
 // ===============================================================================
 // DATA
 // Below data will hold all of the waitlist tables.
-// Initially we just set it equal to a "dummy" customer.
-// But you could have it be an empty array as well.
+// Initially we just set it equal to a "dummy" friend.
+// But could have it be an empty array as well.
 // ===============================================================================
 
+//array of objects with name, photo and scores[]
 var friendArray = [
   {
     "name": "Syeda",

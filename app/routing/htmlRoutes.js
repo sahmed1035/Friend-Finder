@@ -6,25 +6,23 @@ var path = require("path");
 
 
 // ===============================================================================
-// ROUTING
+// ROUTING: setting up routes to deliver the html pages to the user.
 // ===============================================================================
-
+//building routes inside the module.exports function so that we can include these path to the server
 module.exports = function(app) {
   // HTML GET Requests
   // Below code handles when users "visit" a page.
   // In each of the below cases the user is shown an HTML page of content
   // ---------------------------------------------------------------------------
-
+  //telling express what page to deliver based on the path
   app.get("/survey", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/survey.html"));
   });
 
-  // app.get("/reserve", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/reserve.html"));
-  // });
+  
 
-  // If no matching route is found default to home. catch all
-  app.get("*", function(req, res) {
+  // If no matching route is found default to home page. catch-all
+  app.use( function(req, res) {
     res.sendFile(path.join(__dirname, "../public/home.html"));
   });
 };

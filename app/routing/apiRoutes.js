@@ -3,9 +3,9 @@
 // We are linking our routes to a series of "data" sources.
 // These data sources hold arrays of information on table-data, waitinglist, etc.
 // ===============================================================================
-
+//require data from the other file
 var friendData = require("../data/friends");
-// var waitListData = require("../data/waitinglistData");
+
 
 
 // ===============================================================================
@@ -18,14 +18,13 @@ module.exports = function(app) {
   // In each of the below cases when a user visits a link
   // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
   // ---------------------------------------------------------------------------
-
+  //making route inside the module.exports so that server.js can use this route. 
+  //api routes deliver the DATA from the front to the back-end and from the back to the front-end.
   app.get("/api/friends", function(req, res) {
-    res.json(friendData);
+    res.json(friendData); //response in json format
   });
 
-  // app.get("/api/waitlist", function(req, res) {
-  //   res.json(waitListData);
-  // });
+
 
   // API POST Requests
   // Below code handles when a user submits a form and thus submits data to the server.
