@@ -1,6 +1,7 @@
 // ===============================================================================
 // DEPENDENCIES
 // We need to include the path package to get the correct file path for our html
+// already in node. no need to install
 // ===============================================================================
 var path = require("path");
 
@@ -20,7 +21,6 @@ module.exports = function(app) {
   });
 
   
-
   // If no matching route is found default to home page. catch-all
   app.use( function(req, res) {
     res.sendFile(path.join(__dirname, "../public/home.html"));

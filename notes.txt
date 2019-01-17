@@ -1,8 +1,98 @@
-# Friend Finder - Node and Express Servers
+STEPS:
+1. Setup the server. npm init to create package JSON
+2. Install npm packages.
+3. create server.js
+4. run the server and check if it is listening to the port.
+5. build folder structure to organize the code.
+6. create all the html pages. include CDN for CSS and JavaScript. CSS=bootstrap and font-awesome, JavaScript=jQuery
+7. build out the html routing so that router can deliver html pages to the users. htmlRoutes.js
+8. include our htmlRoute.js file in our server.js by requiring it.
+9. create the data. create an array of data. friends.js
+10. build apiRoutes.js for accessing friends.js
+11. include apiRoutes in the server.js
+
+//next need to build a way for the users information that they put in the survey to get put in  the same format as my
+//other objects that I can compare them.
+//closest match based on my answer
+
+/***Now go to servey.html and have the user send an object formatted in the same way to our server
+     * at this route through a POST request using AJAX*/
+
+Determining the user's most compatible friend:
+
+1.	Convert each user's results into a simple array of numbers 
+2.	Compare the difference between current user's scores against those from other users, question by question.
+3.	Add up the differences to calculate the `totalDifference`.
+- two arrays, two loops. First for the friendsArray holding all the friends. Second for the score array for each friend.
+     * Example:
+       - User 1: `[5, 1, 4, 4, 5, 1, 2, 5, 4, 1]`
+       - User 2: `[3, 2, 6, 4, 5, 1, 2, 5, 4, 1]`
+       - Total Difference: **2 + 1 + 2 =** **_5_**
+       - Use the absolute value of the differences. no negative solutions.
+4.  compare NewUser with each existing user in the friendData array. 
+5.  save totalDifference with each user. 
+
+6.  The closest match will be the user with the least amount of difference.
+
+7. Once you've found the current user's most compatible friend, display the result as a modal pop-up.
+   - The modal should display both the name and picture of the closest match.
 
 
 
-* Check out [this demo version of the site](https://friend-finder-fsf.herokuapp.com/). Use this as a model for how we expect your assignment look and operate.
+//Logic: for total difference
+
+app.post("/api/table", function (req, res) {
+    // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
+    // It will do this by sending out the value "true" have a table
+    // req.body is available since we're using the body parsing middleware
+
+    //current user input
+    var userCurrentdata = req.body;
+
+    //tableData
+
+    var storeTotaldifference = [];
+    var results = 0;
+    for (var i = 0; i < tableData.length; i++) {
+
+        //reset the results so it won't retain the previous total scores difference 
+        results = 0;
+        for (var j = 0; j < tableData[i].scores[i].length; j++) {
+            results += userCurrentdata.scores[j] - tableData[i].scores[j];
+
+        }
+        //after subtracting, it will sum all the differences and put it in results
+        // Math.abs(results) will get rid of negative integers.
+        //Then it will put each object with total difference
+        // in a separate array of object called storeTotaldifference
+        storeTotaldifference.push({ name: tableData[i].name, urlImage: tableData[i].urlImage, totalDifference: Math.abs(results) });
+
+    }//end outer for loop
+
+        //reference: https://www.npmjs.com/package/array-sort
+        // need to do npm install array-sort
+        //this npm package allows you to sort the array of object. 
+        //The first argument would 
+        //be the array of objects and the second argument would be your property name to //be sorted in ascending order
+        arraySort(storeTotaldifference, 'totalDifference');
+
+
+        //insert current user to the existing tableData
+        tableData.push(userCurrentdata);
+
+        //first element of this array of object has the least total difference after sorting in //ascending order 
+        //which is the closest match
+        return res.json(storeTotaldifference[0]);
+
+});
+
+
+
+
+
+
+* Check out [this demo version of the site](https://friend-finder-fsf.herokuapp.com/). 
+Use this as a model for how we expect your assignment look and operate.
 
 
 
@@ -43,43 +133,6 @@
 }
 ```
 
-6. Determine the user's most compatible friend using the following as a guide:
-
-   * Convert each user's results into a simple array of numbers (ex: `[5, 1, 4, 4, 5, 1, 2, 5, 4, 1]`).
-   * With that done, compare the difference between current user's scores against those from other users, question by question.
-    Add up the differences to calculate the `totalDifference`.
-     * Example:
-       * User 1: `[5, 1, 4, 4, 5, 1, 2, 5, 4, 1]`
-       * User 2: `[3, 2, 6, 4, 5, 1, 2, 5, 4, 1]`
-       * Total Difference: **2 + 1 + 2 =** **_5_**
-   * Remember to use the absolute value of the differences. Put another way: no negative solutions! 
-   Your app should calculate both `5-3` and `3-5` as `2`, and so on.
-   * The closest match will be the user with the least amount of difference.
-
-1. scoreDifference[] = score-user1[i] - score-user2[i] 
-2. totalDifference =  scoreDifference[i] + scoreDifference[i+1]
-
-compare NewUser with each existing user in the friendData array. save totalDifference with each user. 
-calculate totalDifference with 1st user. calculate totalDifference with 2nd user. if totalDifference with 2ndUser < 1stUser then 
-totalDifference = 2ndUser else totalDifference = 1stUser
-result = least totalDifference
-
-
-
-7. Once you've found the current user's most compatible friend, display the result as a modal pop-up.
-   * The modal should display both the name and picture of the closest match.
-
-### Reminder: Submission on BCS
-
-* Please submit both the deployed Heroku link to your homework AND the link to the Github Repository!
-
-- - -
-
-### Minimum Requirements
-
-Attempt to complete homework assignment as described in instructions. If unable to complete certain portions, please pseudocode these portions to describe what remains to be completed. Adding a README.md as well as adding this homework to your portfolio are required as well and more information can be found below. **This assignment must be deployed.**
-
-- - -
 
 ### Hosting on Heroku
 

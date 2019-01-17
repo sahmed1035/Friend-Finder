@@ -1,6 +1,6 @@
 // ===============================================================================
 // DATA
-// Below data will hold all of the waitlist tables.
+// Below data will hold all of the friends arrays. comming from the survey form on submit.
 // Initially we just set it equal to a "dummy" friend.
 // But could have it be an empty array as well.
 // ===============================================================================
@@ -9,7 +9,7 @@
 var friendArray = [
   {
     "name": "Syeda",
-    "photo": "https://www.facebook.com/photo.php?fbid=10160718432180455&set=a.10150245990845455&type=3&theater",
+    "photo": "https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-9/30739549_10160728437875455_3784399145972793344_o.jpg?_nc_cat=109&_nc_ht=scontent-ort2-1.xx&oh=a0aa07e85d8efdea1dcacb64fe9e5ae2&oe=5CBB76F6",
     "scores": [
     "5",
     "1",
@@ -26,7 +26,7 @@ var friendArray = [
 
     {
       "name": "Darakhshan",
-      "photo": "https://www.facebook.com/photo.php?fbid=10152352221670455&set=a.10150245990845455&type=3&theater",
+      "photo": "https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-9/27751825_1989770994677310_6789033263071176560_n.jpg?_nc_cat=101&_nc_ht=scontent-ort2-1.xx&oh=fbbc88973957b714d55cef4f9f382d32&oe=5CD140E8",
       "scores": [
       "5",
       "1",
@@ -43,6 +43,6 @@ var friendArray = [
   ];
   
   
-  // Note how we export the array. This makes it accessible to other files using require.
+  //we export the array. This makes it accessible to other files using require.
   module.exports = friendArray;
   
