@@ -19,8 +19,8 @@ var app = express();
 // Sets an initial port so that we can use this later in our listener
 var PORT = process.env.PORT || 3000; //whatever port is assigned by the remote server. else use 3000
 
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 
 // ================================================================================
@@ -29,8 +29,8 @@ var PORT = process.env.PORT || 3000; //whatever port is assigned by the remote s
 // These routes give our server a "map" of how to respond when users visit or request data from various URLs.
 // ================================================================================
 //**********including html and api route files in the server*************** */
-// require('./app/routing/apiRoutes.js') (app); //first api-routes . pass express app
-// require('./app/routing/htmlRoutes.js')(app); //html routes in server file
+require('./app/routing/apiRoutes.js') (app); //first api-routes . pass express app
+require('./app/routing/htmlRoutes.js')(app); //html routes in server file
 //************************************************************* */
 
 
