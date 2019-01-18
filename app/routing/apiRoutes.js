@@ -4,7 +4,7 @@
 // These data sources hold arrays of information on friends data.
 // ===============================================================================
 //require data from the friends.js file and saving the reference to friendData.
-var friendArray = require("../data/friends");
+var friendData = require("../data/friends");
 
 
 
@@ -22,7 +22,7 @@ module.exports = function (app) {
 
   //api routes deliver the DATA from the front to the back-end and from the back to the front-end.
   app.get("/api/friends", function (req, res) {
-    res.json(friendArray); //response in json format
+    res.json(friendData); //response in json format
   });
 
 
@@ -57,30 +57,30 @@ module.exports = function (app) {
 
     /******************NESTED FOR LOOP************* */
     //first loop to loop through all the friends 
-    for (var i = 0; i < friendArray.length; i++) {
+    for (var i = 0; i < friendData.length; i++) {
 
-      console.log(friendArray[i]);
+      console.log(friendData[i]);
       totalDifference = 0;
 
       //second loop to loop thourgh the scores array for each friend
-      for (var j = 0; j < friendArray.scores[j]; j++) {
+      for (var j = 0; j < friendData.scores[j]; j++) {
 
         //calculating the difference between the scores. sum them into the totalDiffference
         //using Math.abs() to get an absolute number(no negative)
         //parsing them to integers for calculation
-        totalDifference += Math.abs(parseInt(userScores[j]) - parseInt(friendArray[i].scores[j]));
+        totalDifference += Math.abs(parseInt(userScores[j]) - parseInt(friendData[i].scores[j]));
 
         //console.log(totalDifference);
 
         //if the sum of differences is less then the differences of the current bestMatch
         if (totalDifference <= bestMatch.friendDifference) {
           //replace the bestMatch to be the new friendData
-          bestMatch.name = friendArray[i].name;
-          bestMatch.photo = friendArray[i].photo;
+          bestMatch.name = friendData[i].name;
+          bestMatch.photo = friendData[i].photo;
           bestMatch.friendDifference = totalDifference;
         }
       }
-     
+
     }
 
     //pushing th new user data to the array
