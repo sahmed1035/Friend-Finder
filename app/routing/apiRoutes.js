@@ -63,7 +63,7 @@ module.exports = function (app) {
       totalDifference = 0;
 
       //second loop to loop thourgh the scores array for each friend
-      for (var j = 0; j < friendData.scores[j]; j++) {
+      for (var j = 0; j < friendData.scores.length; j++) {
 
         //calculating the difference between the scores. sum them into the totalDiffference
         //using Math.abs() to get an absolute number(no negative)
