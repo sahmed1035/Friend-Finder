@@ -63,7 +63,7 @@ module.exports = function (app) {
       totalDifference = 0;
 
       //second loop to loop thourgh the scores array for each friend
-      for (var j = 0; j < friendData.scores.length; j++) {
+      for  (var j = 0; j < friendData[i].scores.length; j++) {
 
         //calculating the difference between the scores. sum them into the totalDiffference
         //using Math.abs() to get an absolute number(no negative)
@@ -91,26 +91,8 @@ module.exports = function (app) {
     /***Now go to servey.html and have the user send an object formatted in the same way to our server
      * at this route through a POST request using AJAX*/
 
-    // if (tableData.length < 5) {
-    // friendData.push(req.body); //push new survey to the friendData
-    // res.json(true);
-    // }
-    // else {
-    //   waitListData.push(req.body);
-    //   res.json(false);
-    // }
-
+    
 
   });
 
-  // ---------------------------------------------------------------------------
-  // code to clear out the data while working with the functionality.
-
-
-  // app.post("/api/clear", function(req, res) {
-  //   // Empty out the arrays of data
-  //   friendData.length = [];
-
-  //   res.json({ ok: true });
-  // });
 };

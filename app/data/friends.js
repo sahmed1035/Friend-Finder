@@ -9,7 +9,7 @@
 var friendArray = [
   {
     "name": "Syeda",
-    "photo": "https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-9/30739549_10160728437875455_3784399145972793344_o.jpg?_nc_cat=109&_nc_ht=scontent-ort2-1.xx&oh=a0aa07e85d8efdea1dcacb64fe9e5ae2&oe=5CBB76F6",
+    "photo": "https://scontent-ort2-1.xx.fbcdn.net/v/t31.0-8/21427581_10159527789790455_6869825643592615720_o.jpg?_nc_cat=109&_nc_ht=scontent-ort2-1.xx&oh=0827e084b202ce951deb1430be3e2ca1&oe=5CCB4A3A",
     "scores": [
     "5",
     "1",

@@ -3,7 +3,7 @@
 Node and Express Servers (week 13 assignment) 
 
 ## Project Description
-link to the video: [Friend-Finder](https://drive.google.com/file/d/11HyHoZGI7l3W06Y1B_UHEEGBxE6aCuE0/view)
+link to the site: [Friend-Finder](https://syeda-friend-finder1.herokuapp.com/)
 This is an dating-site like app where you can find friends on compatibility base. This is a full-stack site that takes results from users' surveys havign a series of 10 questions, then campare their answers with those from other users. After using the compatibility logic, it displays the name and picture of the user with the best overall match.
 ### Compatibility logic:
 Determine the user's most compatible friend using the following as a guide:
