@@ -7,7 +7,6 @@
 var friendData = require("../data/friends");
 
 
-
 // ===============================================================================
 // ROUTING
 // making route inside the module.exports so that server.js can use this route. 
@@ -50,7 +49,7 @@ module.exports = function (app) {
     // taking the result of the newUser survey post and parsing it.
     var userData = req.body;
     var userScores = userData.scores;
-    console.log(userScores);
+   
 
     //variable to calculate the difference between the newUserScores and the scores of each user in the array.
     var totalDifference = 0;
@@ -59,7 +58,7 @@ module.exports = function (app) {
     //first loop to loop through all the friends 
     for (var i = 0; i < friendData.length; i++) {
 
-      console.log(friendData[i]);
+      //console.log(friendData[i]);
       totalDifference = 0;
 
       //second loop to loop thourgh the scores array for each friend
@@ -70,8 +69,7 @@ module.exports = function (app) {
         //parsing them to integers for calculation
         totalDifference += Math.abs(parseInt(userScores[j]) - parseInt(friendData[i].scores[j]));
 
-        //console.log(totalDifference);
-
+       
         //if the sum of differences is less then the differences of the current bestMatch
         if (totalDifference <= bestMatch.friendDifference) {
           //replace the bestMatch to be the new friendData
